@@ -4,9 +4,8 @@ import java.io.IOException;
 
 import org.simplenativehooks.events.NativeKeyEvent;
 import org.simplenativehooks.events.NativeMouseEvent;
-
-import staticResources.BootStrapResources;
-import utilities.Function;
+import org.simplenativehooks.staticResources.BootStrapResources;
+import org.simplenativehooks.utilities.Function;
 
 public class Example {
 	public static void main(String[] args) throws InterruptedException {

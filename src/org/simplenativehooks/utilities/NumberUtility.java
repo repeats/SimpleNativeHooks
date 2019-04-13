@@ -1,4 +1,4 @@
-package utilities;
+package org.simplenativehooks.utilities;
 
 
 public final class NumberUtility {

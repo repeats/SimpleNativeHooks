@@ -1,8 +1,7 @@
 package org.simplenativehooks.listeners;
 
 import org.simplenativehooks.events.NativeKeyEvent;
-
-import utilities.Function;
+import org.simplenativehooks.utilities.Function;
 
 public abstract class AbstractGlobalKeyListener implements GlobalListener {
 	protected Function<NativeKeyEvent, Boolean> keyPressed;

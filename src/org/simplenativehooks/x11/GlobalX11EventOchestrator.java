@@ -3,7 +3,7 @@ package org.simplenativehooks.x11;
 import java.io.File;
 import java.util.logging.Logger;
 
-import staticResources.NativeHookBootstrapResources;
+import org.simplenativehooks.staticResources.NativeHookBootstrapResources;
 
 public class GlobalX11EventOchestrator {
 

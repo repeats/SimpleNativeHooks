@@ -1,10 +1,10 @@
-package staticResources;
+package org.simplenativehooks.staticResources;
 
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
-import utilities.FileUtility;
+import org.simplenativehooks.utilities.FileUtility;
 
 public class BootStrapResources {
 

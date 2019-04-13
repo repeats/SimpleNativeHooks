@@ -8,7 +8,7 @@ import java.lang.ProcessBuilder.Redirect;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import utilities.StringUtilities;
+import org.simplenativehooks.utilities.StringUtilities;
 
 public abstract class AbstractNativeHookEventProcessor {
 	private static final Logger LOGGER = Logger.getLogger(AbstractNativeHookEventProcessor.class.getName());

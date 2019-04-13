@@ -1,11 +1,11 @@
-package staticResources;
+package org.simplenativehooks.staticResources;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-import utilities.FileUtility;
-import utilities.Function;
+import org.simplenativehooks.utilities.FileUtility;
+import org.simplenativehooks.utilities.Function;
 
 public abstract class AbstractBootstrapResource {
 

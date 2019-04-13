@@ -8,8 +8,7 @@ import java.util.regex.Pattern;
 
 import org.simplenativehooks.AbstractNativeHookEventProcessor;
 import org.simplenativehooks.NativeHookGlobalEventPublisher;
-
-import staticResources.NativeHookBootstrapResources;
+import org.simplenativehooks.staticResources.NativeHookBootstrapResources;
 
 public class GlobalWindowsEventOchestrator extends AbstractNativeHookEventProcessor {
 

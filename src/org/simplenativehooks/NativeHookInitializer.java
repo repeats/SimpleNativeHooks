@@ -5,14 +5,14 @@ import java.util.logging.Logger;
 
 import org.simplenativehooks.linux.GlobalLinuxEventOchestrator;
 import org.simplenativehooks.osx.GlobalOSXEventOchestrator;
+import org.simplenativehooks.utilities.OSIdentifier;
 import org.simplenativehooks.windows.GlobalWindowsEventOchestrator;
 import org.simplenativehooks.x11.GlobalX11EventOchestrator;
-
-import utilities.OSIdentifier;
 
 public class NativeHookInitializer {
 
 	private static final Logger LOGGER = Logger.getLogger(NativeHookInitializer.class.getName());
+	public static final String VERSION = "0.0.2";
 	public static final boolean USE_X11_ON_LINUX = true;
 
 	private static final NativeHookInitializer INSTANCE = new NativeHookInitializer();

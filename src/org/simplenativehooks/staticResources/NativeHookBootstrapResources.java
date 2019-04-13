@@ -1,11 +1,10 @@
-package staticResources;
+package org.simplenativehooks.staticResources;
 
 import java.io.File;
 
 import org.simplenativehooks.NativeHookInitializer;
-
-import utilities.FileUtility;
-import utilities.OSIdentifier;
+import org.simplenativehooks.utilities.FileUtility;
+import org.simplenativehooks.utilities.OSIdentifier;
 
 public class NativeHookBootstrapResources extends AbstractBootstrapResource {
 

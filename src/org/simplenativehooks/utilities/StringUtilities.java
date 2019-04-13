@@ -1,4 +1,4 @@
-package utilities;
+package org.simplenativehooks.utilities;
 
 import java.awt.Color;
 import java.util.Arrays;

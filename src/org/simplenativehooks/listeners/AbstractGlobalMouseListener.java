@@ -1,8 +1,7 @@
 package org.simplenativehooks.listeners;
 
 import org.simplenativehooks.events.NativeMouseEvent;
-
-import utilities.Function;
+import org.simplenativehooks.utilities.Function;
 
 public abstract class AbstractGlobalMouseListener implements GlobalListener {
 
