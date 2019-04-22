@@ -22,3 +22,31 @@ Java library (with simple native components) for global keyboard and mouse liste
 
 # Demo application:
 See example [here](src/org/simplenativehooks/Example.java).
+
+# Maven dependency:
+Include maven dependency by adding the following in your pom file:
+
+```
+<dependencies>
+  <dependency>
+    ... (existing dependencies)
+  </dependency>
+
+  <dependency>
+    <groupId>org.repeats.simplenativehooks</groupId>
+    <artifactId>simplenativehooks</artifactId>
+    <version>0.0.1</version>
+  </dependency>
+</dependencies>
+
+<repositories>
+    <repository>
+        <id>SimpleNativeHooks-maven-export</id>
+        <url>https://raw.github.com/repeats/SimpleNativeHooks/maven-export/</url>
+        <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+        </snapshots>
+    </repository>
+</repositories>
+```
