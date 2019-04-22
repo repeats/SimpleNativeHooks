@@ -16,6 +16,7 @@ Java library (with simple native components) for global keyboard and mouse liste
   * Enable Access for Assistive Devices
 * Windows:
   * i586, amd64
+  * .NET framework v4.0+
 * Linux:
   * i586
   * X11 window manager.
