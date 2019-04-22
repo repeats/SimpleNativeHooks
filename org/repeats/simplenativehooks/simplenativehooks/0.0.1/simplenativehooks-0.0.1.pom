@@ -1,0 +1,19 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.repeats.simplenativehooks</groupId>
+  <artifactId>simplenativehooks</artifactId>
+  <version>0.0.1</version>
+  <packaging>jar</packaging>
+ 
+  <name>Simple Native Hooks</name>
+  <description>A Java library for global keyboard and mouse listeners.</description>
+  <url>https://github.com/repeats/Repeat</url>
+ 
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+</project>
