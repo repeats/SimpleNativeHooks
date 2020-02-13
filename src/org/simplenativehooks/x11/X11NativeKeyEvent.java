@@ -352,6 +352,10 @@ public class X11NativeKeyEvent extends NativeHookKeyEvent {
 			k = KeyEvent.VK_META;
 			m = Modifier.KEY_MODIFIER_LEFT;
 			break;
+		case 126:
+			k = KeyEvent.VK_META;
+			m = Modifier.KEY_MODIFIER_RIGHT;
+			break;
 		case 127:
 			k = KeyEvent.VK_CONTEXT_MENU;
 			break;
