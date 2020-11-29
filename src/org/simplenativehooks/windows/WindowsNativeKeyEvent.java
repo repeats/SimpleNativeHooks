@@ -24,10 +24,12 @@ class WindowsNativeKeyEvent extends NativeHookKeyEvent {
 	public NativeKeyEvent convertEvent() throws InvalidKeyEventException {
 		boolean pressed = false;
 		switch (param) {
-		case 256:
+		case 256: // WM_KEYDOWN
+		case 260: // WM_SYSKEYDOWN, triggered for Alt key.
 			pressed = true;
 			break;
-		case 257:
+		case 257: // WM_KEYUP
+		case 261: // WM_SYSKEYUP
 			pressed = false;
 			break;
 		default:
