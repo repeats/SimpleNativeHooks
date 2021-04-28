@@ -49,16 +49,18 @@ public class GlobalOSXEventOchestrator extends AbstractNativeHookEventProcessor 
 		Matcher mouseMatch = MOUSE_EVENT.matcher(line);
 		if (mouseMatch.find()) {
 			String codeString = mouseMatch.group(1);
-			String xString = mouseMatch.group(2);
-			String yString = mouseMatch.group(3);
+			String negX = mouseMatch.group(2);
+			String xString = mouseMatch.group(3);
+			String negY = mouseMatch.group(4);
+			String yString = mouseMatch.group(5);
 
 			int code, x, y;
 			try {
 				code = Integer.parseInt(codeString);
-				x = Integer.parseInt(xString);
-				y = Integer.parseInt(yString);
+				x = Integer.parseInt(negX + xString);
+				y = Integer.parseInt(negY + yString);
 			} catch (NumberFormatException e) {
-				LOGGER.log(Level.WARNING, "Unexpected number format exception when parsing output.", e);
+				LOGGER.log(Level.WARNING, "Unexpected number format exception when parsing output " + line + ".", e);
 				return;
 			}
 
@@ -92,7 +94,7 @@ public class GlobalOSXEventOchestrator extends AbstractNativeHookEventProcessor 
 				event = Integer.parseInt(eventString);
 				code = Integer.parseInt(codeString);
 			} catch (NumberFormatException e) {
-				LOGGER.log(Level.WARNING, "Unexpected number format exception when parsing output.", e);
+				LOGGER.log(Level.WARNING, "Unexpected number format exception when parsing output " + line + ".", e);
 				return;
 			}
 
@@ -113,7 +115,7 @@ public class GlobalOSXEventOchestrator extends AbstractNativeHookEventProcessor 
 				code = Integer.parseInt(codeString);
 				modifier = Long.parseLong(modifierString);
 			} catch (NumberFormatException e) {
-				LOGGER.log(Level.WARNING, "Unexpected number format exception when parsing output.", e);
+				LOGGER.log(Level.WARNING, "Unexpected number format exception when parsing output " + line + ".", e);
 				return;
 			}
 
