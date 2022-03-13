@@ -13,7 +13,7 @@ import org.simplenativehooks.x11.GlobalX11EventOchestrator;
 public class NativeHookInitializer {
 
 	private static final Logger LOGGER = Logger.getLogger(NativeHookInitializer.class.getName());
-	public static final String VERSION = "0.0.5";
+	public static final String VERSION = "0.0.6";
 	public static final boolean USE_X11_ON_LINUX = true;
 
 	private final Config config;
@@ -23,7 +23,8 @@ public class NativeHookInitializer {
 	}
 
 	public static NativeHookInitializer of() {
-		return new NativeHookInitializer(Config.Builder.of().useJnaForWindows(true).build());
+		Config config = Config.Builder.of().useJnaForWindows(true).useJavaAwtToReportMousePositionOnWindows(true).build();
+		return new NativeHookInitializer(config);
 	}
 
 	public static NativeHookInitializer of(Config config) {
@@ -32,13 +33,19 @@ public class NativeHookInitializer {
 
 	public static class Config {
 		private boolean useJnaForWindows;
+		// Instead of using Windows low level hook position, use Java AWT tools to fetch mouse
+		// position. This because Windows reported position is not reliable when scaling is enabled.
+		// Note: This only works when useJnaForWindows is enabled.
+		private boolean useJavaAwtToReportMousePositionOnWindows;
 
-		private Config(boolean useJnaForWindows) {
+		private Config(boolean useJnaForWindows, boolean useJavaAwtToReportMousePositionOnWindows) {
 			this.useJnaForWindows = useJnaForWindows;
+			this.useJavaAwtToReportMousePositionOnWindows = useJavaAwtToReportMousePositionOnWindows;
 		}
 
 		public static class Builder {
 			private boolean useJnaForWindows;
+			private boolean useJavaAwtToReportMousePositionOnWindows;
 
 			private Builder() {}
 
@@ -54,8 +61,13 @@ public class NativeHookInitializer {
 				return this;
 			}
 
+			public Builder useJavaAwtToReportMousePositionOnWindows(boolean useJavaAwtToReportMousePositionOnWindows) {
+				this.useJavaAwtToReportMousePositionOnWindows = useJavaAwtToReportMousePositionOnWindows;
+				return this;
+			}
+
 			public Config build() {
-				return new Config(useJnaForWindows);
+				return new Config(useJnaForWindows, useJavaAwtToReportMousePositionOnWindows);
 			}
 		}
 	}
@@ -63,6 +75,7 @@ public class NativeHookInitializer {
 	public void start() {
 		if (OSIdentifier.IS_WINDOWS) {
 			if (config.useJnaForWindows) {
+				GlobalWindowsJnaEventOchestrator.of().setUseJavaAwtToReportMousePositionOnWindows(config.useJavaAwtToReportMousePositionOnWindows);
 				GlobalWindowsJnaEventOchestrator.of().start();
 			} else {
 				GlobalWindowsEventOchestrator.of().start();

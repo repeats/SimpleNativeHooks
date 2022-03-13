@@ -1,5 +1,7 @@
 package org.simplenativehooks.windows;
 
+import java.awt.MouseInfo;
+import java.awt.Point;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
@@ -28,13 +30,19 @@ public class GlobalWindowsJnaEventOchestrator {
 
 	private static final Logger LOGGER = Logger.getLogger(GlobalWindowsJnaEventOchestrator.class.getName());
 
-	private static GlobalWindowsJnaEventOchestrator INSTANCE = new GlobalWindowsJnaEventOchestrator();
+	private boolean useJavaAwtToReportMousePositionOnWindows;
+
+	private static final GlobalWindowsJnaEventOchestrator INSTANCE = new GlobalWindowsJnaEventOchestrator();
 
 	public static GlobalWindowsJnaEventOchestrator of() {
 		return INSTANCE;
 	}
 
 	private GlobalWindowsJnaEventOchestrator() {}
+
+	public void setUseJavaAwtToReportMousePositionOnWindows(boolean use) {
+		this.useJavaAwtToReportMousePositionOnWindows = use;
+	}
 
 	public interface LowLevelMouseProc extends HOOKPROC {
 		LRESULT callback(int nCode, WPARAM wParam, MOUSEHOOKSTRUCT lParam);
@@ -100,7 +108,16 @@ public class GlobalWindowsJnaEventOchestrator {
 			// http://msdn.microsoft.com/en-us/library/windows/desktop/ms644986(v=vs.85).aspx
 			public LRESULT callback(int nCode, WPARAM wParam, MOUSEHOOKSTRUCT lParam) {
 				if (nCode >= 0) {
-					NativeHookGlobalEventPublisher.of().publishMouseEvent(WindowsNativeMouseEvent.of(lParam.pt.x, lParam.pt.y, wParam.intValue()));
+					int x = lParam.pt.x;
+					int y = lParam.pt.y;
+
+					if (useJavaAwtToReportMousePositionOnWindows) {
+						Point p = MouseInfo.getPointerInfo().getLocation();
+						x = p.x;
+						y = p.y;
+					}
+
+					NativeHookGlobalEventPublisher.of().publishMouseEvent(WindowsNativeMouseEvent.of(x, y, wParam.intValue()));
 				}
 
 				Pointer ptr = lParam.getPointer();
