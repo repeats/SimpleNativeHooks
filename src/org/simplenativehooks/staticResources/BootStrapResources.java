@@ -1,6 +1,7 @@
 package org.simplenativehooks.staticResources;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,7 +22,7 @@ public class BootStrapResources {
 		BOOTSTRAP_RESOURCES.add(nativeHookResources);
 	}
 
-	public static void extractResources() throws IOException {
+	public static void extractResources() throws IOException, URISyntaxException {
 		for (AbstractBootstrapResource resource : BOOTSTRAP_RESOURCES) {
 			resource.extractResources();
 		}

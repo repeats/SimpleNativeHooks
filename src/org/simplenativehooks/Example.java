@@ -1,6 +1,7 @@
 package org.simplenativehooks;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 import org.simplenativehooks.events.NativeKeyEvent;
 import org.simplenativehooks.events.NativeMouseEvent;
@@ -12,7 +13,7 @@ public class Example {
 		/* Extracting resources */
 		try {
 			BootStrapResources.extractResources();
-		} catch (IOException e) {
+		} catch (IOException | URISyntaxException e) {
 			System.out.println("Cannot extract bootstrap resources.");
 			e.printStackTrace();
 			System.exit(2);

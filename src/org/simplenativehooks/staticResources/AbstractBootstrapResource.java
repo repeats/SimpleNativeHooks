@@ -2,6 +2,7 @@ package org.simplenativehooks.staticResources;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.logging.Logger;
 
 import org.simplenativehooks.utilities.FileUtility;
@@ -11,7 +12,7 @@ public abstract class AbstractBootstrapResource {
 
 	private static final Logger LOGGER = Logger.getLogger(AbstractBootstrapResource.class.getName());
 
-	protected void extractResources() throws IOException {
+	protected void extractResources() throws IOException, URISyntaxException {
 		if (!FileUtility.createDirectory(getExtractingDest().getAbsolutePath())) {
 			LOGGER.warning("Failed to extract " + getName() + " resources");
 			return;
