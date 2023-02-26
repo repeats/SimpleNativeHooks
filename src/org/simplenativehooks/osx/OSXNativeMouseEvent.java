@@ -38,7 +38,7 @@ public class OSXNativeMouseEvent extends NativeHookMouseEvent {
 			break;
 		case 4:
 			s = State.RELEASED;
-			button = KeyEvent.BUTTON3_DOWN_MASK;
+			button = KeyEvent.BUTTON1_DOWN_MASK;
 			break;
 		case 5:
 			s = State.PRESSED;
